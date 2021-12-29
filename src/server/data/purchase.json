@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "title": "ABBAYE DE BELLOC",
+        "price": 109.95,
+        "quantity": 4,
+        "total_price": 439.8
+    },
+    {
+        "id": 2,
+        "title": "ABBAYE DU MONT DES CATS",
+        "price": 109.95,
+        "quantity": 4,
+        "total_price": 439.8
+    }
+]
