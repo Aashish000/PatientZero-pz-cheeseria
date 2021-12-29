@@ -28,7 +28,7 @@ const Item: React.FC<Props> = ({ item, handleAddToCart, handleClickOpen}) => (
     {/* <Button 
       onClick={() => AlertDialog()}
       >Open Dialog</Button> */}
-      
+      {/* on click view details pass the items data to alertDialog component */}
       <Button 
         onClick ={() =>
           alertDialog(item.title, ""+item.price+"", item.description,

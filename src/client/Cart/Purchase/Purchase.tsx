@@ -7,11 +7,14 @@ import CartItem from '../CartItem/CartItem';
 import Cart from '../Cart';
 import FileSaver from 'file-saver';
 import { json } from 'express';
-
+//purchase component 
 const Purchase = (Cart) =>{
-    alert("hellp");
+    // alert("hellp");
+    //convert the data into json format
     var purchase = JSON.stringify(Cart);
+    //create new blob with json type
     var blob = new Blob([purchase], {type: "json"});
+    //used filesaver to save the file
     FileSaver.saveAs(blob, "Purchase.json");
     console.log(purchase);
 }

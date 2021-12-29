@@ -10,6 +10,7 @@ router.get('/api/cheeses', (req, res, next) => {
 
     res.json(cheeses);
 });
+//create a new route for puchase api.
 router.get('/api/purchase', (req, res, next) => {
 
     res.json(purchase);

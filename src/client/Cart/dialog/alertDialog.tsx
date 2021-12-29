@@ -2,7 +2,7 @@ import {Dialog, DialogContent, DialogContentText, DialogTitle, DialogActions, Bu
 import { Close, Message } from '@material-ui/icons';
 import React from 'react'
 import  create from 'zustand';
-
+//type 
 type AlertDialogStore = {
   title: string;
   price: string;
@@ -10,6 +10,7 @@ type AlertDialogStore = {
   onSubmit?: () => void;
   close: () => void;
 }
+//create AlertDialogStore and store the variables 
 const useAlertDialogStore = create<AlertDialogStore>((set)=> ({
   title: "",
   price: "",
@@ -20,7 +21,7 @@ const useAlertDialogStore = create<AlertDialogStore>((set)=> ({
     onSubmit: undefined,
   }),
 }));
-
+//exporting the values 
 export const alertDialog =(title: string, price: string, message: string, onSubmit: () => void) => {
   useAlertDialogStore.setState({
     title,
@@ -29,7 +30,7 @@ export const alertDialog =(title: string, price: string, message: string, onSubm
     onSubmit,
   });
 };
-
+//declare alert dialog and return dialog 
 const AlertDialog: React.FC = () => {
   const { title, price, message, onSubmit, close } = useAlertDialogStore();
   return (
@@ -41,6 +42,7 @@ const AlertDialog: React.FC = () => {
         </IconButton>
     </Box>
     <DialogContent>
+      {/* mapping the values to its key */}
       <DialogContentText>
         <h1>Title: {title}</h1>
         <h2>Price: {price}</h2>

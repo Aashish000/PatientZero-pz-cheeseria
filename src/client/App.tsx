@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import RestoreIcon from '@material-ui/icons/Restore';
 import Badge from '@material-ui/core/Badge';
+//importing dialog components
 import Dialog from "@material-ui/core/Dialog";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
@@ -21,6 +22,7 @@ import { Wrapper, StyledButton, StyledAppBar, HeaderTypography } from './App.sty
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import { render } from '@testing-library/react';
 // Types
+
 export type CartItemType = {
   id: number;
   category: string;
@@ -30,6 +32,7 @@ export type CartItemType = {
   title: string;
   amount: number;
 };
+//export type purchase item type 
 export type purchaseItemType = {
   id: number; 
   title: string;
@@ -41,9 +44,10 @@ export type purchaseItemType = {
 
 const getCheeses = async (): Promise<CartItemType[]> =>
   await (await fetch(`api/cheeses`)).json();
-const getPurchase = async (): Promise<purchaseItemType[]> =>
+//getpuchase 
+  const getPurchase = async (): Promise<purchaseItemType[]> =>
   await(await fetch(`api/purchase`)).json();
-
+//state for dialog open and close 
 const App = () => {
   const [open, setOpen] = React.useState(false);
   
@@ -61,6 +65,7 @@ const App = () => {
       const handleDialogClose = () => {
         setDialogOpen(false);
       };
+      //dialogopne and purhaseitem variable using state
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [cartOpen, setCartOpen] = useState(false);
   const [clickOpen, setClickOpen] = useState(false);
@@ -72,6 +77,7 @@ const App = () => {
   );
   const [data1, setData] = useState<any[]>([])
   // const [data1,setData]=useState([]);
+  //fetching data from the api 
   const getData=()=>{
     fetch('api/purchase'
     ,{
@@ -96,9 +102,10 @@ const App = () => {
 
   const getTotalItems = (items: CartItemType[]) =>
     items.reduce((ack: number, item) => ack + item.amount, 0);
+   //handling click open 
     const handleClickOpen = (clickedItem: CartItemType) =>{      
     };
-
+//declare handle add to cart 
   const handleAddToCart = (clickedItem: CartItemType) => {
  
     setCartItems(prev => {
@@ -116,6 +123,7 @@ const App = () => {
       return [...prev, { ...clickedItem, amount: 1 }];
     });
   };
+  //use open state when clicked
   const [open1, setOpen1] = React.useState(false);
   const handleClickOpen1 = () => {
     setOpen1(true);
@@ -153,7 +161,7 @@ const App = () => {
             justify="space-between"
             alignItems="center"
           >
-          
+          {/* using handleClickOpen on onclick  */}
             <StyledButton onClick={handleClickOpen1}>
               <RestoreIcon />
               <Typography variant="subtitle2">
@@ -198,18 +206,21 @@ const App = () => {
           </Grid>
         ))}
       </Grid>
+      {/* dialog tag with its properties */}
       <Dialog
       open={open1}
       onClose={handleClose1}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
+      
       <DialogTitle id="alert-dialog-title">
         {"Recent Purchases"}
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
         <ul>
+          {/* map data into list with purchase data with its respective key values */}
                 {data1.map(el => {
                   return (
                     <li key={el.id}>
@@ -224,6 +235,7 @@ const App = () => {
         </ul>
         </DialogContentText>
       </DialogContent>
+      {/* close the dialog */}
       <DialogActions>
         <Button onClick={handleClose1} autoFocus>
           Close
